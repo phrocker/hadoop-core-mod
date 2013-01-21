@@ -794,9 +794,11 @@ class MapTask extends Task {
       if (recper > (float)1.0 || recper < (float)0.01) {
         throw new IOException("Invalid \"io.sort.record.percent\": " + recper);
       }
+      /*
       if ((sortmb & 0x7FF) != sortmb) {
         throw new IOException("Invalid \"io.sort.mb\": " + sortmb);
       }
+      */
       sorter = ReflectionUtils.newInstance(
             job.getClass("map.sort.class", QuickSort.class, IndexedSorter.class), job);
       LOG.info("io.sort.mb = " + sortmb);
